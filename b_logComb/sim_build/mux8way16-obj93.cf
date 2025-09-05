@@ -1,0 +1,4 @@
+v 4
+file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/mux8way16.vhd" "470b10026ac698b5c49fd5b8d4492ce660a8a6ff" "20250905134204.253":
+  entity mux8way16 at 1( 0) + 0 on 11;
+  architecture arch of mux8way16 at 18( 516) + 0 on 12;
