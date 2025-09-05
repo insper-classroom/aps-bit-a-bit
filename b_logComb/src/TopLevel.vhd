@@ -51,6 +51,6 @@ end component;
 -- implementacao
 ---------------
 begin
-
+	LEDR(0) <= SW(0);
 
 end rtl;
