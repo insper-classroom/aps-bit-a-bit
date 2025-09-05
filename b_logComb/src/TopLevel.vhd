@@ -51,6 +51,10 @@ end component;
 -- implementacao
 ---------------
 begin
-	LEDR(0) <= SW(0);
-
+	--LEDR(0) <= SW(0);
+	--LEDR(0) <= not SW(0);
+	--LEDR(0) <= SW(0) or SW(1);
+	LEDR<= "1111111111" when SW="1001101010";
+	
+	
 end rtl;
