@@ -487,3 +487,51 @@ async def tb_sevenseg(dut):
             assert condition, "Error in test {0}!".format(i)
         await Timer(1, units="ns")
 
+
+@cocotb.test()
+async def tb_xor3(dut):
+
+    ina = [0,0,0,0,1,1,1,1]
+    inb = [0,0,1,1,0,0,1,1]
+    inc = [0,1,0,1,0,1,0,1]
+    out = [0,1,1,0,1,0,0,1]
+
+
+    for i in range(len(ina)):
+        dut.a1.value = ina[i]
+        dut.b1.value = inb[i]
+        dut.c1.value = inc[i]
+
+        await Timer(1, units='ns')
+        condition = (dut.q1.value == out[i])
+        if not condition:
+            dut._log.error("Expected value: " + "{0:07b}".format(out[i]) + " Obtained value: " + str(dut.q1.value) )
+            assert condition, "Error in test {0}!".format(i)
+        await Timer(1, units="ns")
+
+@cocotb.test()
+async def tb_carrinho(dut):
+
+    inx1 = [0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1]
+    inx2 = [0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1]
+    inx3 = [0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1]
+    inx4 = [0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1]
+    outy1 = [0b10,0b00,0b01,0b01,0b00,0b00,0b00,0b00,0b10,0b00,0b00,0b00,0b10,0b00,0b00,0b00]
+    outy2 = [0b10,0b01,0b00,0b01,0b10,0b00,0b00,0b00,0b00,0b00,0b00,0b00,0b10,0b00,0b00,0b00]
+    
+    for i in range(len(inx1)):
+        dut.x1.value = inx1[i]
+        dut.x2.value = inx2[i]
+        dut.x3.value = inx3[i]
+        dut.x4.value = inx4[i]
+
+        await Timer(1, units='ns')
+        condition1 = (dut.y1.value == outy1[i])
+        condition2 = (dut.y2.value == outy2[i])
+        if not condition1:
+            dut.log.error("Expected value: " + "{0:07b}".format(outy1[i]) + " Obtained value: " + str(dut.y1.value) )
+            assert condition1, 'Error in test {0}!'.format(i)
+        if not condition2:
+            dut.log.error("Expected value: " + "{0:07b}".format(outy2[i]) + " Obtained value: " + str(dut.y2.value) )
+            assert condition1, 'Error in test {0}!'.format(i)
+        await Timer(1, units='ns')
