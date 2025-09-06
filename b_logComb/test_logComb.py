@@ -113,4 +113,3 @@ if __name__ == "__main__":
     test_sevenseg()
     test_xor3()
     test_carrinho()
-    test_coisa()
