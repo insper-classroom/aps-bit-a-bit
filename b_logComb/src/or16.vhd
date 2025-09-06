@@ -10,5 +10,7 @@ end entity;
 
 architecture arch of or16 is
 begin
-
+	gen_bits: for i in 0 to 15 generate
+		q(i) <= a(i) or b(i);
+	end generate;
 end architecture;

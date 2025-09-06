@@ -9,5 +9,7 @@ end entity;
 
 architecture arch of not16 is
 begin
-
+	gen_bits: for i in 0 to 15 generate
+		q(i) <= not a(i);
+	end generate;
 end architecture;
