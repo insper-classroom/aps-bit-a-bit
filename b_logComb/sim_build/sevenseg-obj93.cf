@@ -1,4 +1,4 @@
 v 4
-file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/sevenseg.vhd" "e174e7c147c024bdc966270f335d3bba6f7ce61a" "20250906160039.390":
+file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/sevenseg.vhd" "642ba773ee539f2a0bee5addfab6f76c8a4c0b94" "20250906165359.894":
   entity sevenseg at 1( 0) + 0 on 11;
   architecture arch of sevenseg at 10( 171) + 0 on 12;

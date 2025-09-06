@@ -1,4 +1,4 @@
 v 4
-file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/or8way.vhd" "09903f063b56b80b299601eefa372f3f8ee0935b" "20250906160022.704":
+file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/or8way.vhd" "09903f063b56b80b299601eefa372f3f8ee0935b" "20250906165344.264":
   entity or8way at 1( 0) + 0 on 11;
   architecture arch of or8way at 17( 290) + 0 on 12;

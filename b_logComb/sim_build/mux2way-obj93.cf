@@ -1,4 +1,4 @@
 v 4
-file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/mux2way.vhd" "8829e833b9427a2b1b83c0f85e912d65f13668d4" "20250906160029.370":
+file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/mux2way.vhd" "b9e3f55b2a61aa3c431475a166221d10b4f0d527" "20250906165350.969":
   entity mux2way at 1( 0) + 0 on 11;
   architecture arch of mux2way at 12( 177) + 0 on 12;
