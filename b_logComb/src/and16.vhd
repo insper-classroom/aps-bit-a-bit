@@ -10,5 +10,7 @@ end entity;
 
 architecture arch of and16 is
 begin
-
+	gen_bits: for i in 0 to 15 generate
+		q(i) <= a(i) and b(i);
+	end generate;
 end architecture;
