@@ -13,7 +13,9 @@ end entity;
 
 architecture arch of mux4way is
 begin
-
-
+	q <= a when sel = "00" else
+		b when sel = "01" else
+		c when sel = "10" else
+		d;
 
 end architecture;
