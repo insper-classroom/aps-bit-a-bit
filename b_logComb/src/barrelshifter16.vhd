@@ -14,5 +14,8 @@ architecture rtl of barrelshifter16 is
 	--signal num: integer;
 begin
 
+    q <= std_logic_vector(shift_left (unsigned(a), to_integer(unsigned(size)))) when dir = '0'
+         else std_logic_vector(shift_right(unsigned(a), to_integer(unsigned(size))));
+
 end architecture;
 
