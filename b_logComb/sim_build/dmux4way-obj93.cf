@@ -1,4 +1,7 @@
 v 4
+<<<<<<< HEAD
 file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/dmux4way.vhd" "9a76b3d96e6a7bdfbd0ea14ecd95c3d5657ccd76" "20250910175216.544":
+=======
+>>>>>>> ce33db3076aaefe9457762ac8d0c3656a4feb4fd
   entity dmux4way at 1( 0) + 0 on 11;
   architecture rtl of dmux4way at 14( 243) + 0 on 12;
