@@ -1,4 +1,4 @@
 v 4
-file / "/home/borg/Documents/Elementos de Sistemas/aps-bit-a-bit/b_logComb/src/mux4way16.vhd" "40e2ac2db5e2ba4a612710b08436eaac3aa65dcf" "20250910192007.015":
-  entity mux4way16 at 1( 0) + 0 on 4;
-  architecture arch of mux4way16 at 15( 388) + 0 on 4;
+file / "/home/borg/Documents/Elementos de Sistemas/aps-bit-a-bit/b_logComb/src/mux4way16.vhd" "6cd5cb0fd0e6b84a45879e238e6195614ea2d051" "20250910192445.292":
+  entity mux4way16 at 1( 0) + 0 on 11;
+  architecture arch of mux4way16 at 14( 344) + 0 on 12;
