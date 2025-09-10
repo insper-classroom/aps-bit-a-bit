@@ -13,19 +13,9 @@ end entity;
 
 architecture arch of mux4way is
 begin
-<<<<<<< HEAD
-	 with sel select
-        q <= a when "00",
-             b when "01",
-             c when "10",
-             d when "11",
-             '0' when others;
-end arch;
-=======
 	q <= a when sel = "00" else
 		b when sel = "01" else
 		c when sel = "10" else
 		d;
 
 end architecture;
->>>>>>> rosado
