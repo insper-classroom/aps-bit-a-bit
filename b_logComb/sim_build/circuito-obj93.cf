@@ -1,4 +1,4 @@
 v 4
-file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/circuito.vhd" "94a5fbc2f245ab9bc0f59001d30b14db6cbe15c1" "20250910175226.503":
+file / "/home/borg/Elesis/aps2/aps-bit-a-bit/b_logComb/src/circuito.vhd" "94a5fbc2f245ab9bc0f59001d30b14db6cbe15c1" "20250910225551.607":
   entity circuito at 1( 0) + 0 on 11;
   architecture arch of circuito at 10( 139) + 0 on 12;

@@ -1,4 +1,4 @@
 v 4
-file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/impressora.vhd" "2a128f7aadf3723fe06f01010d3648d669dd5a16" "20250910175227.579":
+file / "/home/borg/Elesis/aps2/aps-bit-a-bit/b_logComb/src/impressora.vhd" "6de632ac40c725b67087469696d0c7f79162b86b" "20250910225552.322":
   entity impressora at 1( 0) + 0 on 11;
   architecture arch of impressora at 10( 148) + 0 on 12;

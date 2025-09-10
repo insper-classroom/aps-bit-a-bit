@@ -1,7 +1,4 @@
 v 4
-<<<<<<< HEAD
-file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/mux4way.vhd" "50bd5e0805cc382c4afe5f1e94cc2dc35b78fcc6" "20250910175219.897":
-=======
->>>>>>> ce33db3076aaefe9457762ac8d0c3656a4feb4fd
+file / "/home/borg/Elesis/aps2/aps-bit-a-bit/b_logComb/src/mux4way.vhd" "dabdf0f5c3f2145ef362e2702e7e9f6fba70a55a" "20250910225547.145":
   entity mux4way at 1( 0) + 0 on 11;
   architecture arch of mux4way at 14( 242) + 0 on 12;

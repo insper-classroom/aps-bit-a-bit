@@ -1,8 +1,4 @@
 v 4
-<<<<<<< HEAD
-file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/nor8way.vhd" "d8cf5ea5ad2b495416d8a918cd700664a87df2bf" "20250910175213.220":
-=======
-
->>>>>>> ce33db3076aaefe9457762ac8d0c3656a4feb4fd
+file / "/home/borg/Elesis/aps2/aps-bit-a-bit/b_logComb/src/nor8way.vhd" "8f5b8aeef8f3a5ff773588d51ecc2433b4a3ef4a" "20250910225542.688":
   entity nor8way at 1( 0) + 0 on 11;
   architecture arch of nor8way at 17( 292) + 0 on 12;
