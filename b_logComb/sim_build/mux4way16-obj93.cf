@@ -1,8 +1,12 @@
 v 4
 <<<<<<< HEAD
+<<<<<<< HEAD
 file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/mux4way16.vhd" "793e848f24a0269cf473cc350a91c43a848d2f05" "20250910175223.178":
 =======
 
 >>>>>>> ce33db3076aaefe9457762ac8d0c3656a4feb4fd
+=======
+file / "/home/borg/Documents/Elementos de Sistemas/aps-bit-a-bit/b_logComb/src/mux4way16.vhd" "6cd5cb0fd0e6b84a45879e238e6195614ea2d051" "20250910192445.292":
+>>>>>>> rosado
   entity mux4way16 at 1( 0) + 0 on 11;
   architecture arch of mux4way16 at 14( 344) + 0 on 12;
