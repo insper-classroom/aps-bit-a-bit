@@ -1,7 +1,7 @@
 v 4
-file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/xor3.vhd" "d9657480a536c00551f8d917e34ee7e67784a127" "20250906150026.808":
+file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/xor3.vhd" "d9657480a536c00551f8d917e34ee7e67784a127" "20250910175229.752":
   entity xor3 at 1( 0) + 0 on 11;
   architecture rtl of xor3 at 13( 186) + 0 on 12;
-file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/mux8way.vhd" "eafd69bf9f95d94024ed2b700c341851abe405e0" "20250906150026.808":
+file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/mux8way.vhd" "eafd69bf9f95d94024ed2b700c341851abe405e0" "20250910175229.752":
   entity mux8way at 1( 0) + 0 on 13;
   architecture rlt of mux8way at 20( 338) + 0 on 14;

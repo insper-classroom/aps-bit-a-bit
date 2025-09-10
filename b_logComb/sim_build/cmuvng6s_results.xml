@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1757526748" />
+    <testcase name="tb_sevenseg" classname="logComb_cocotb" file="/home/denis/elementos/aps-bit-a-bit/b_logComb/logComb_cocotb.py" lineno="473" time="0.0006554126739501953" sim_time_ns="6.000001" ratio_time="9154.53917581084" />
+  </testsuite>
+</testsuites>

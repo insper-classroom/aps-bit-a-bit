@@ -1,4 +1,4 @@
 v 4
-file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/carrinho.vhd" "afb08725726522e7db4b60cbcc5125665f0b9842" "20250906150027.917":
+file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/carrinho.vhd" "afb08725726522e7db4b60cbcc5125665f0b9842" "20250910175230.849":
   entity carrinho at 1( 0) + 0 on 11;
   architecture rtl of carrinho at 16( 299) + 0 on 12;

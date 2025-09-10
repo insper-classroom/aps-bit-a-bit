@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(5CEBA4F23) Path("/home/borg/Elesis/aps-bit-a-bit/b_logComb/Quartus/") File("DE0_CV_Default.sof") MfrSpec(OpMask(1));
+		Device PartName(5CEBA4F23) Path("/home/denis/elementos/aps-bit-a-bit/b_logComb/Quartus/") File("DE0_CV_Default.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
