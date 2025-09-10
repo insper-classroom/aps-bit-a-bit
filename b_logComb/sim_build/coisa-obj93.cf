@@ -1,0 +1,4 @@
+v 4
+file / "/home/denis/elementos/aps-bit-a-bit/b_logComb/src/coisa.vhd" "825523a8d5028b8d6dba42f1685ab782a5e9b145" "20250906150029.068":
+  entity coisa at 1( 0) + 0 on 11;
+  architecture rtl of coisa at 13( 182) + 0 on 12;

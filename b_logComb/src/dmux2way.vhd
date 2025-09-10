@@ -6,7 +6,9 @@ entity dmux2way is
 			a:   in  STD_LOGIC;
 			sel: in  STD_LOGIC;
 			q0:  out STD_LOGIC;
-			q1:  out STD_LOGIC);
+			q1:  out STD_LOGIC
+		 );
+		 
 end entity;
 
 architecture rtl of dmux2way is
