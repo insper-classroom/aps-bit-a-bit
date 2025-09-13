@@ -1,9 +1,3 @@
--- Elementos de Sistemas
--- by Luciano Soares
--- Inversor16.vhd
-
--- Implementa Inversor 16
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
