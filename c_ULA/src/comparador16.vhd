@@ -1,9 +1,3 @@
--- Elementos de Sistemas
--- by Luciano Soares
--- comparador16.vhd
-
--- Implementa Comparador 16
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
@@ -16,11 +10,10 @@ entity comparador16 is
 end comparador16;
 
 architecture rtl of comparador16 is
-  -- Aqui declaramos sinais (fios auxiliares)
-  -- e componentes (outros módulos) que serao
-  -- utilizados nesse modulo.
 
 begin
-  -- Implementação vem aqui!
-
+  with a select
+  zr <= '1' when "0000000000000000",
+        '0' when others;
+  ng <= a(15);
 end architecture;
