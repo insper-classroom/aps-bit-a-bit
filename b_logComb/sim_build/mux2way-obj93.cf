@@ -1,4 +1,0 @@
-v 4
-file / "/home/borg/Elesis/aps2/aps-bit-a-bit/b_logComb/src/mux2way.vhd" "94ce3a7a3a7e3bd3999494f31d9d6f0ecb6f97ba" "20250910225546.373":
-  entity mux2way at 1( 0) + 0 on 11;
-  architecture arch of mux2way at 12( 259) + 0 on 12;
