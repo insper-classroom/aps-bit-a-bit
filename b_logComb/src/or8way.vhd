@@ -17,6 +17,7 @@ end entity;
 architecture arch of or8way is
 	signal word: STD_LOGIC_VECTOR(7 downto 0);
 begin
-
+	word <= a & b & c & d & e & f & g & h;
+	q <= word(7) or word(6) or word(5) or word(4) or word(3) or word(2) or word(1) or word(0);
 
 end architecture;

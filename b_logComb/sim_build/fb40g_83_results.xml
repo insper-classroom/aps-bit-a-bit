@@ -1,8 +1,0 @@
-<testsuites name="results">
-  <testsuite name="all" package="all">
-    <property name="random_seed" value="1757092321" />
-    <testcase name="tb_or16" classname="logComb_cocotb" file="/home/denis/elementos/aps-bit-a-bit/b_logComb/logComb_cocotb.py" lineno="26" time="0.0005838871002197266" sim_time_ns="1.000001" ratio_time="1712.6615738276846">
-      <failure message="Test failed with RANDOM_SEED=1757092321" />
-    </testcase>
-  </testsuite>
-</testsuites>

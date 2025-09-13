@@ -537,26 +537,30 @@ set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -
 # end ENTITY(TopLevel)
 # --------------------
 set_global_assignment -name VHDL_FILE ../src/TopLevel.vhd
-set_global_assignment -name VHDL_FILE ../src/Or16.vhd
-set_global_assignment -name VHDL_FILE ../src/Or8Way.vhd
-set_global_assignment -name VHDL_FILE ../src/Not16.vhd
-set_global_assignment -name VHDL_FILE ../src/Nor8Way.vhd
-set_global_assignment -name VHDL_FILE ../src/Nand.vhd
-set_global_assignment -name VHDL_FILE ../src/Mux16.vhd
-set_global_assignment -name VHDL_FILE ../src/Mux8Way16.vhd
-set_global_assignment -name VHDL_FILE ../src/Mux8Way.vhd
-set_global_assignment -name VHDL_FILE ../src/Mux4Way16.vhd
-set_global_assignment -name VHDL_FILE ../src/Mux4Way.vhd
-set_global_assignment -name VHDL_FILE ../src/Mux2Way.vhd
-set_global_assignment -name VHDL_FILE ../src/DMux8Way.vhd
-set_global_assignment -name VHDL_FILE ../src/DMux4Way.vhd
-set_global_assignment -name VHDL_FILE ../src/DMux2Way.vhd
-set_global_assignment -name VHDL_FILE ../src/BarrelShifter16.vhd
-set_global_assignment -name VHDL_FILE ../src/BarrelShifter8.vhd
-set_global_assignment -name VHDL_FILE ../src/And16.vhd
 set_global_assignment -name SDC_FILE DE0_CV_Default.sdc
 
 
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
+set_global_assignment -name VHDL_FILE ../src/and16.vhd
+set_global_assignment -name VHDL_FILE ../src/barrelshifter16.vhd
+set_global_assignment -name VHDL_FILE ../src/carrinho.vhd
+set_global_assignment -name VHDL_FILE ../src/circuito.vhd
+set_global_assignment -name VHDL_FILE ../src/detectordemoedas.vhd
+set_global_assignment -name VHDL_FILE ../src/dmux2way.vhd
+set_global_assignment -name VHDL_FILE ../src/dmux4way.vhd
+set_global_assignment -name VHDL_FILE ../src/dmux8way.vhd
+set_global_assignment -name VHDL_FILE ../src/impressora.vhd
+set_global_assignment -name VHDL_FILE ../src/mux2way.vhd
+set_global_assignment -name VHDL_FILE ../src/mux4way.vhd
+set_global_assignment -name VHDL_FILE ../src/mux4way16.vhd
+set_global_assignment -name VHDL_FILE ../src/mux8way.vhd
+set_global_assignment -name VHDL_FILE ../src/mux8way16.vhd
+set_global_assignment -name VHDL_FILE ../src/mux16.vhd
+set_global_assignment -name VHDL_FILE ../src/nor8way.vhd
+set_global_assignment -name VHDL_FILE ../src/not16.vhd
+set_global_assignment -name VHDL_FILE ../src/or8way.vhd
+set_global_assignment -name VHDL_FILE ../src/or16.vhd
+set_global_assignment -name VHDL_FILE ../src/sevenseg.vhd
+set_global_assignment -name VHDL_FILE ../src/xor3.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
