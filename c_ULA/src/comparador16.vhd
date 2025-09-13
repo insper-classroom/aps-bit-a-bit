@@ -2,6 +2,8 @@
 -- by Luciano Soares
 -- comparador16.vhd
 
+-- Implementa Comparador 16
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 

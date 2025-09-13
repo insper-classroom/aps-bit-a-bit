@@ -1,3 +1,9 @@
+-- Elementos de Sistemas
+-- by Luciano Soares
+-- HalfAdder.vhd
+
+-- Implementa Half Adder
+
 Library ieee;
 use ieee.std_logic_1164.all;
 
