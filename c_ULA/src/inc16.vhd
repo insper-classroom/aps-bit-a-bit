@@ -3,7 +3,6 @@
 -- Inc16.vhd
 
 -- Incrementador de 16 bits
--- adiciona 1 ao valor de entrada (adição aritmética)
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
