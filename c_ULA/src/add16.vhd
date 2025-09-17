@@ -27,8 +27,20 @@ architecture rtl of Add16 is
       soma,vaium: out STD_LOGIC   -- sum e carry
     );
   end component;
+  signal carry : STD_LOGIC_VECTOR(16 downto O);
+
 
 begin
-  -- Implementação vem aqui!
+  carry(0) <= '0';
 
+  gen_adders: for i in 0 to 15 generate
+  fa: FullAdder
+  port map(
+    a => a(i),
+    b => b(i),
+    c => carry(i),
+    soma => q(i),
+    vaim => carry(i+1)
+  );
+end generate;
 end architecture;
