@@ -1,10 +1,3 @@
--- Elementos de Sistemas
--- by Luciano Soares
--- Add16.vhd
-
--- Soma dois valores de 16 bits
--- ignorando o carry mais significativo
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
@@ -13,34 +6,34 @@ entity Add16 is
 		a   :  in STD_LOGIC_VECTOR(15 downto 0);
 		b   :  in STD_LOGIC_VECTOR(15 downto 0);
 		q   : out STD_LOGIC_VECTOR(15 downto 0)
+    --cout: out STD_LOGIC
 	);
 end entity;
 
 architecture rtl of Add16 is
-  -- Aqui declaramos sinais (fios auxiliares)
-  -- e componentes (outros módulos) que serao
-  -- utilizados nesse modulo.
-
   component FullAdder is
     port(
-      a,b,c:      in STD_LOGIC;   -- entradas
-      soma,vaium: out STD_LOGIC   -- sum e carry
+      a, b, c   : in  STD_LOGIC;
+      soma      : out STD_LOGIC;
+      vaium     : out STD_LOGIC
     );
   end component;
-  signal carry : STD_LOGIC_VECTOR(16 downto 0);
 
+  signal carry: STD_LOGIC_VECTOR(16 downto 0);
 
-begin
-  carry(0) <= '0';
+  begin
+  carry(0) <= '0'; -- sem carry no comeco
 
-  gen_adders: for i in 0 to 15 generate
-  fa: FullAdder
-  port map(
-    a => a(i),
-    b => b(i),
-    c => carry(i),
-    soma => q(i),
-    vaim => carry(i+1)
-  );
-end generate;
+  gen_add: for i in 0 to 15 generate
+    u: FullAdder
+      port map(
+        a    => a(i),
+        b    => b(i),
+        c    => carry(i),
+        soma => q(i),
+        vaium=> carry(i+1)
+      );
+  end generate;
+  --cout <= carry(16);
+  
 end architecture;
