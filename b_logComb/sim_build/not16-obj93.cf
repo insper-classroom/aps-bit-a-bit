@@ -1,4 +1,0 @@
-v 4
-file / "/home/borg/Elesis/aps2/aps-bit-a-bit/b_logComb/src/not16.vhd" "885941b20abbf9b96a2389a18971efe6f48a97a9" "20250910225541.243":
-  entity not16 at 1( 0) + 0 on 11;
-  architecture arch of not16 at 10( 169) + 0 on 12;

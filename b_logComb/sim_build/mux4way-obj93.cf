@@ -1,4 +1,0 @@
-v 4
-file / "/home/borg/Elesis/aps2/aps-bit-a-bit/b_logComb/src/mux4way.vhd" "dabdf0f5c3f2145ef362e2702e7e9f6fba70a55a" "20250910225547.145":
-  entity mux4way at 1( 0) + 0 on 11;
-  architecture arch of mux4way at 14( 242) + 0 on 12;
