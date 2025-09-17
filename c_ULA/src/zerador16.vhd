@@ -1,7 +1,3 @@
--- Elementos de Sistemas
--- by Luciano Soares
--- zerador16.vhd
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
@@ -14,11 +10,12 @@ entity zerador16 is
 end zerador16;
 
 architecture rtl of zerador16 is
-  -- Aqui declaramos sinais (fios auxiliares)
-  -- e componentes (outros módulos) que serao
-  -- utilizados nesse modulo.
+  signal zero: STD_LOGIC_VECTOR(15 downto 0);
 
 begin
-  -- Implementação vem aqui!
+  zero <= "0000000000000000";
+  with z select
+    y <=  a when '0',
+          zero when others;
 
 end architecture;

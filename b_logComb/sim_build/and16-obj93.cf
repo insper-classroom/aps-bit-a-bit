@@ -1,4 +1,0 @@
-v 4
-file / "/home/borg/Elesis/aps2/aps-bit-a-bit/b_logComb/src/and16.vhd" "d2c9ce2eabc5af55bf85c18ea95861517eee70a5" "20250910225539.740":
-  entity and16 at 1( 0) + 0 on 11;
-  architecture arch of and16 at 11( 212) + 0 on 12;

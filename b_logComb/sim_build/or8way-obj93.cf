@@ -1,4 +1,0 @@
-v 4
-file / "/home/borg/Elesis/aps2/aps-bit-a-bit/b_logComb/src/or8way.vhd" "b49e15465cdeb06c80eb07101bd45dda76ffafd8" "20250910225541.975":
-  entity or8way at 1( 0) + 0 on 11;
-  architecture arch of or8way at 17( 290) + 0 on 12;
