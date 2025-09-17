@@ -27,7 +27,7 @@ architecture rtl of Add16 is
       soma,vaium: out STD_LOGIC   -- sum e carry
     );
   end component;
-  signal carry : STD_LOGIC_VECTOR(16 downto O);
+  signal carry : STD_LOGIC_VECTOR(16 downto 0);
 
 
 begin
