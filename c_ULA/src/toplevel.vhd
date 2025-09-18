@@ -6,16 +6,16 @@
 -- da placa DE0-CV utilizada no curso de elementos de
 -- sistemas do 3s da eng. da computacao
 
-----------------------------
--- Bibliotecas ieee       --
-----------------------------
+----------------------
+-- Bibliotecas ieee --
+----------------------
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-----------------------------
--- Entrada e saidas do bloco
-----------------------------
+-------------------------------
+-- Entrada e saidas do bloco --
+-------------------------------
 entity TopLevel is
 	port(
 		SW      : in  std_logic_vector(9 downto 0);
@@ -33,37 +33,36 @@ end entity;
 -- Implementacao do bloco --
 ----------------------------
 architecture rtl of TopLevel is
-
---------------
--- signals
---------------
-
+-------------
+-- signals --
+-------------
   signal x : std_logic_vector(15 downto 0) := x"0073"; -- 115
   signal y : std_logic_vector(15 downto 0) := x"005F"; -- 95
-  signal output: std_logic_vector(15 downto 0);
+  signal saida: std_logic_vector(15 downto 0);
   signal off: std_logic_vector(15 downto 0);
---------------
--- component
---------------
+
+---------------
+-- component --
+---------------
   component HalfAdder is
     port(
       a,b:         in STD_LOGIC;   -- entradas
       soma,vaium: out STD_LOGIC   -- sum e carry
-      );
+    );
   end component;
 
   component FullAdder is
       port(
-          a,b,c:      in STD_LOGIC;   -- entradas
-          soma,vaium: out STD_LOGIC   -- sum e carry
-          );
+        a,b,c:      in STD_LOGIC;   -- entradas
+        soma,vaium: out STD_LOGIC   -- sum e carry
+      );
     end component;
 
   component sevenseg is
 	port(
-			bcd: 			in STD_LOGIC_VECTOR(3 downto 0);
-			leds: 		out STD_LOGIC_VECTOR(6 downto 0);
-      );
+    bcd: 			in STD_LOGIC_VECTOR(3 downto 0);
+    leds: 		out STD_LOGIC_VECTOR(6 downto 0);
+  );
 	end component;
 
 	 component ALU is
@@ -78,55 +77,55 @@ architecture rtl of TopLevel is
 			zr:    out STD_LOGIC;                    	-- setado se saída igual a zero
 			ng:    out STD_LOGIC;                    	-- setado se saída é negativa
 			saida: out STD_LOGIC_VECTOR(15 downto 0);	-- saída de dados da ALU
-			carry: out STD_LOGIC					 			-- carry de saída
+			carry: out STD_LOGIC					 			      -- carry de saída
 		);
-
 		end component;
----------------
--- implementacao
----------------
+
+-------------------
+-- implementacao --
+-------------------
 begin
-  --u1 : HalfAdder port map(a => SW(0), b=> SW(1), soma => LEDR(0), vaium => LEDR(1));
   HEX4 <= off;
   HEX5 <= off;
 
   u2 : ALU
 	port map(
-				x => x,
-				y => y,
-				zx => SW(0),
-				nx => SW(1),
-				zy => SW(2),
-				ny => SW(3),
-				f => SW(4),
-				no => SW(5),
-				zr => LEDR(0),
-				ng => LEDR(1),
-				saida => output,
-				carry => LEDR(2)
-		);
-	h0: sevenseg
+    x => x,
+    y => y,
+    zx => SW(0),
+    nx => SW(1),
+    zy => SW(2),
+    ny => SW(3),
+    f => SW(4),
+    no => SW(5),
+    zr => LEDR(0),
+    ng => LEDR(1),
+    saida => saida,
+    carry => LEDR(2)
+	);
+
+  h0: sevenseg
 	port map(
-				bcd => output(3 downto 0);
-				leds => HEX0
-				);
+    bcd => saida(3 downto 0);
+    leds => HEX0
+  );
 
 	h1: sevenseg
 	port map(
-				bcd => output(7 downto 4);
-				leds => HEX1
-				);
+    bcd => saida(7 downto 4);
+    leds => HEX1
+  );
 				
 	h2: sevenseg
 	port map(
-				bcd => output(11 downto 7);
-				leds => HEX2
-				);
+    bcd => saida(11 downto 7);
+    leds => HEX2
+  );
 
 	h3: sevenseg
 	port map(
-				bcd => output(15 downto 11);
-				leds => HEX3
-				);
+    bcd => saida(15 downto 11);
+    leds => HEX3
+  );
 
 end rtl;
