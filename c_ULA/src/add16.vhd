@@ -34,6 +34,6 @@ architecture rtl of Add16 is
         vaium=> carry(i+1)
       );
   end generate;
-  cout <= carry(16);
-  
+  cout <= carry(16) xor carry(15);
+
 end architecture;

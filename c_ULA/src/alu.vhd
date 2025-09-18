@@ -67,7 +67,6 @@ architecture  rtl OF alu is
 	end component;
 
 	SIGNAL zxout,zyout,nxout,nyout,andout,adderout,muxout,precomp: std_logic_vector(15 downto 0);
-	signal addercarry: std_logic;
 
 begin
 	zeradorx: zerador16
@@ -110,7 +109,7 @@ begin
 			a => nxout,
 			b => nyout,
 			q => adderout,
-			cout => addercarry
+			cout => carry
 		);
 	
 	mux: Mux16
