@@ -19,7 +19,7 @@ use ieee.numeric_std.all;
 entity TopLevel is
 	port(
 		SW      : in  std_logic_vector(9 downto 0);
-		LEDR    : out std_logic_vector(9 downto 0)
+		LEDR    : out std_logic_vector(9 downto 0);
 		HEX0     : out std_logic_vector(6 downto 0);
 		HEX1     : out std_logic_vector(6 downto 0);
 		HEX2     : out std_logic_vector(6 downto 0);
@@ -36,10 +36,10 @@ architecture rtl of TopLevel is
 -------------
 -- signals --
 -------------
-  signal x : std_logic_vector(15 downto 0) := x"0073"; -- 115
-  signal y : std_logic_vector(15 downto 0) := x"005F"; -- 95
+  signal x : std_logic_vector(15 downto 0) := x"0FFF";  -- 
+  signal y : std_logic_vector(15 downto 0) := x"0FFF";  --
   signal saida: std_logic_vector(15 downto 0);
-  signal off: std_logic_vector(15 downto 0);
+  signal off: std_logic_vector(6 downto 0) := "1111111"; -- apagado
 
 ---------------
 -- component --
@@ -61,7 +61,7 @@ architecture rtl of TopLevel is
   component sevenseg is
 	port(
     bcd: 			in STD_LOGIC_VECTOR(3 downto 0);
-    leds: 		out STD_LOGIC_VECTOR(6 downto 0);
+    leds: 		out STD_LOGIC_VECTOR(6 downto 0)
   );
 	end component;
 
@@ -106,25 +106,25 @@ begin
 
   h0: sevenseg
 	port map(
-    bcd => saida(3 downto 0);
+    bcd => saida(3 downto 0),
     leds => HEX0
   );
 
 	h1: sevenseg
 	port map(
-    bcd => saida(7 downto 4);
+    bcd => saida(7 downto 4),
     leds => HEX1
   );
 				
 	h2: sevenseg
 	port map(
-    bcd => saida(11 downto 7);
+    bcd => saida(11 downto 8),
     leds => HEX2
   );
 
 	h3: sevenseg
 	port map(
-    bcd => saida(15 downto 11);
+    bcd => saida(15 downto 12),
     leds => HEX3
   );
 
