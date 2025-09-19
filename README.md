@@ -3,9 +3,10 @@
 
 ## APS C: Unidade Lógica Aritmética
 ### Vídeo do conceito B:
-* link 1
+* https://youtu.be/6MlTXM271xs
+
 ### Vídeo do conceito A:
-* link 2
+* https://youtu.be/Z11oyoC3WEI
 
 ## APS B: Lógica Combinacional
 ### Video da FPGA funcionando com os dígitos Hexadecimais:
