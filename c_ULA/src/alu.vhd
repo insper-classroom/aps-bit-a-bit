@@ -3,17 +3,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity ALU is
 	port (
-			x,y:   in STD_LOGIC_VECTOR(15 downto 0); -- entradas de dados da ALU
-			zx:    in STD_LOGIC;                     -- zera a entrada x
-			nx:    in STD_LOGIC;                     -- inverte a entrada x
-			zy:    in STD_LOGIC;                     -- zera a entrada y
-			ny:    in STD_LOGIC;                     -- inverte a entrada y
-			f:     in STD_LOGIC;                     -- se 0 calcula x & y, senão x + y
-			no:    in STD_LOGIC;                     -- inverte o valor da saída
-			zr:    out STD_LOGIC;                    -- setado se saída igual a zero
-			ng:    out STD_LOGIC;                    -- setado se saída é negativa
-			saida: out STD_LOGIC_VECTOR(15 downto 0);-- saída de dados da ALU
-			carry: out STD_LOGIC					 -- carry de saída
+			x,y:   in STD_LOGIC_VECTOR(15 downto 0); 	-- entradas de dados da ALU
+			zx:    in STD_LOGIC;                     	-- zera a entrada x
+			nx:    in STD_LOGIC;                     	-- inverte a entrada x
+			zy:    in STD_LOGIC;                     	-- zera a entrada y
+			ny:    in STD_LOGIC;                     	-- inverte a entrada y
+			f:     in STD_LOGIC;                     	-- se 0 calcula x & y, senão x + y
+			no:    in STD_LOGIC;                     	-- inverte o valor da saída
+			zr:    out STD_LOGIC;                    	-- setado se saída igual a zero
+			ng:    out STD_LOGIC;                    	-- setado se saída é negativa
+			saida: out STD_LOGIC_VECTOR(15 downto 0);	-- saída de dados da ALU
+			carry: out STD_LOGIC					 	-- carry de saída
 	);
 end entity;
 
