@@ -13,7 +13,7 @@ entity ALU is
 			zr:    out STD_LOGIC;                    	-- setado se saída igual a zero
 			ng:    out STD_LOGIC;                    	-- setado se saída é negativa
 			saida: out STD_LOGIC_VECTOR(15 downto 0);	-- saída de dados da ALU
-			carry: out STD_LOGIC					 	-- carry de saída
+			carry: out STD_LOGIC					 	-- carry overflow de saída
 	);
 end entity;
 

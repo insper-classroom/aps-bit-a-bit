@@ -36,7 +36,7 @@ architecture rtl of TopLevel is
 -------------
 -- signals --
 -------------
-  signal x : std_logic_vector(15 downto 0) := x"FFFF";  -- 
+  signal x : std_logic_vector(15 downto 0) := x"0FFF";  -- 
   signal y : std_logic_vector(15 downto 0) := x"0001";  --
   signal saida: std_logic_vector(15 downto 0);
   signal off: std_logic_vector(6 downto 0) := "1111111"; -- apagado
