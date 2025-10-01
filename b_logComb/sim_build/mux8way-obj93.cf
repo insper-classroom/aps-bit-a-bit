@@ -1,4 +1,0 @@
-v 4
-file / "/home/borg/Elesis/aps2/aps-bit-a-bit/b_logComb/src/mux8way.vhd" "eafd69bf9f95d94024ed2b700c341851abe405e0" "20250910225547.861":
-  entity mux8way at 1( 0) + 0 on 11;
-  architecture rlt of mux8way at 20( 338) + 0 on 12;

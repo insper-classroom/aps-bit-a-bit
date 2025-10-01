@@ -1,6 +1,15 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/tgRCPRor)
 
-## Video da FPGA funcionando com os dígitos Hexadecimais
+
+## APS C: Unidade Lógica Aritmética
+### Vídeo do conceito B:
+* https://youtu.be/6MlTXM271xs
+
+### Vídeo do conceito A:
+* https://youtu.be/Z11oyoC3WEI
+
+## APS B: Lógica Combinacional
+### Video da FPGA funcionando com os dígitos Hexadecimais:
 * https://youtu.be/6QXyKhrzQrE
 
 ```
