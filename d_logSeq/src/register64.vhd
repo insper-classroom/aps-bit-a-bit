@@ -26,7 +26,16 @@ architecture arch of Register64 is
 	end component;
 
 begin
-
-
-
+	gen_bytes: for i in 0 to 1 generate
+    constant hi : integer := i*32 + 31;
+    constant lo : integer := i*32;
+	begin
+    	u_reg: Register32
+    		port map(
+        		clock  => clock,
+        		input  => input(hi downto lo),
+        		load   => load,
+        		output => output(hi downto lo)
+    		);
+	end generate;
 end architecture;

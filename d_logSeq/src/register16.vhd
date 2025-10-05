@@ -26,7 +26,16 @@ architecture arch of Register16 is
 	end component;
 
 begin
-
-
-
+	gen_bytes: for i in 0 to 1 generate
+    constant hi : integer := i*8 + 7;
+    constant lo : integer := i*8;
+	begin
+    	u_reg: Register8
+    		port map(
+        		clock  => clock,
+        		input  => input(hi downto lo),
+        		load   => load,
+        		output => output(hi downto lo)
+    		);
+	end generate;
 end architecture;

@@ -26,7 +26,13 @@ architecture arch of Register8 is
 	end component;
 
 begin
-
-
-
+	gen_bits: for i in 0 to 7 generate
+		u: BinaryDigit
+			port map(
+				clock => clock,
+				input => input(i),
+				load => load,
+				output => output(i)
+			);
+	end generate;
 end architecture;
