@@ -14,60 +14,59 @@ use ieee.std_logic_1164.all;
 use IEEE.NUMERIC_STD.ALL;
 
 entity PC is
-    port(
-        clock     : in  STD_LOGIC;
-        increment : in  STD_LOGIC;
-        load      : in  STD_LOGIC;
-        reset     : in  STD_LOGIC;
-        input     : in  STD_LOGIC_VECTOR(15 downto 0);
-        output    : out STD_LOGIC_VECTOR(15 downto 0) 
-    );
+  port(
+    clock     : in  STD_LOGIC;
+    increment : in  STD_LOGIC;
+    load      : in  STD_LOGIC;
+    reset     : in  STD_LOGIC;
+    input     : in  STD_LOGIC_VECTOR(15 downto 0);
+    output    : out STD_LOGIC_VECTOR(15 downto 0) 
+  );
 end entity;
 
 architecture arch of PC is
 
-  signal muxOut : std_logic_vector(15 downto 0);
-  signal muxin0 : std_logic_vector(15 downto 0);
+  signal muxOut    : std_logic_vector(15 downto 0);
+  signal muxin0    : std_logic_vector(15 downto 0);
   signal outputReg : std_logic_vector(15 downto 0);
-  signal load_reg: std_logic;
-  signal sel_mux: std_logic;
+  signal load_reg  : std_logic;
+  signal sel_mux   : std_logic;
+
+  signal pc_inc    : std_logic_vector(15 downto 0);
+  signal pc_load   : std_logic_vector(15 downto 0);
 
   component Inc16 is
-      port(
-          a   :  in STD_LOGIC_VECTOR(15 downto 0);
-          q   : out STD_LOGIC_VECTOR(15 downto 0)
-          );
+    port(
+      a   :  in STD_LOGIC_VECTOR(15 downto 0);
+      q   : out STD_LOGIC_VECTOR(15 downto 0)
+    );
   end component;
 
   component Register16 is
-      port(
-          clock:   in STD_LOGIC;
-          input:   in STD_LOGIC_VECTOR(15 downto 0);
-          load:    in STD_LOGIC;
-          output: out STD_LOGIC_VECTOR(15 downto 0)
-        );
-    end component;
+    port(
+      clock:   in STD_LOGIC;
+      input:   in STD_LOGIC_VECTOR(15 downto 0);
+      load:    in STD_LOGIC;
+      output: out STD_LOGIC_VECTOR(15 downto 0)
+    );
+  end component;
 
-    component Mux16 is
-		port (
-			a:   in STD_LOGIC_VECTOR(15 downto 0);
-			b:   in STD_LOGIC_VECTOR(15 downto 0);
-			sel: in  STD_LOGIC;
-			q:   out STD_LOGIC_VECTOR(15 downto 0)
-            );
-	end component;
-
+  component Mux16 is
+    port (
+      a:   in STD_LOGIC_VECTOR(15 downto 0);
+      b:   in STD_LOGIC_VECTOR(15 downto 0);
+      sel: in  STD_LOGIC;
+      q:   out STD_LOGIC_VECTOR(15 downto 0)
+    );
+  end component;
 
 begin
-
-  -- calcular pc + 1
   u_inc: Inc16
     port map(
       a => outputReg,
       q => pc_inc
     );
 
-  -- mux entre manter pc (outputReg) e pc_inc (increment)
   u_mux_inc: Mux16
     port map(
       a   => outputReg,
@@ -76,7 +75,6 @@ begin
       q   => muxOut
     );
 
-  -- mux entre resultado anterior (muxOut) e input (load)
   u_mux_load: Mux16
     port map(
       a   => muxOut,
@@ -85,18 +83,15 @@ begin
       q   => pc_load
     );
 
-  -- mux de reset: se reset='1' => zero, else pega pc_load
   u_mux_reset: Mux16
     port map(
-      a   => (others => '0'),
-      b   => pc_load,
+      a   => pc_load,        -- quando reset='0' escolhe pc_load
+      b   => (others => '0'),-- quando reset='1' escolhe zero
       sel => reset,
       q   => muxin0
     );
 
-  -- faz o registrador carregar sempre o valor calculado (comportamento de D-register)
   load_reg <= '1';
-  sel_mux  <= increment; -- mantido por compatibilidade com template
 
   u_reg: Register16
     port map(
@@ -106,7 +101,6 @@ begin
       output => outputReg
     );
 
-  -- expõe o valor do PC
   output <= outputReg;
 
 end architecture;
