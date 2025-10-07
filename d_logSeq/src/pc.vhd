@@ -60,6 +60,53 @@ architecture arch of PC is
 
 begin
 
+  -- calcular pc + 1
+  u_inc: Inc16
+    port map(
+      a => outputReg,
+      q => pc_inc
+    );
 
+  -- mux entre manter pc (outputReg) e pc_inc (increment)
+  u_mux_inc: Mux16
+    port map(
+      a   => outputReg,
+      b   => pc_inc,
+      sel => increment,
+      q   => muxOut
+    );
+
+  -- mux entre resultado anterior (muxOut) e input (load)
+  u_mux_load: Mux16
+    port map(
+      a   => muxOut,
+      b   => input,
+      sel => load,
+      q   => pc_load
+    );
+
+  -- mux de reset: se reset='1' => zero, else pega pc_load
+  u_mux_reset: Mux16
+    port map(
+      a   => (others => '0'),
+      b   => pc_load,
+      sel => reset,
+      q   => muxin0
+    );
+
+  -- faz o registrador carregar sempre o valor calculado (comportamento de D-register)
+  load_reg <= '1';
+  sel_mux  <= increment; -- mantido por compatibilidade com template
+
+  u_reg: Register16
+    port map(
+      clock  => clock,
+      input  => muxin0,
+      load   => load_reg,
+      output => outputReg
+    );
+
+  -- expõe o valor do PC
+  output <= outputReg;
 
 end architecture;
