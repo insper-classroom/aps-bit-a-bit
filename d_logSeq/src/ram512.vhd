@@ -59,6 +59,7 @@ architecture arch of Ram512 is
 	signal output0, output1, output2, output3, output4, output5, output6, output7 : STD_LOGIC_VECTOR(15 downto 0);
 
 begin
+
 	dmux_block: DMux8Way
 		port map (
 			a   => load,
@@ -96,5 +97,4 @@ begin
 			q   => output
 		);
 
-		
 end architecture;

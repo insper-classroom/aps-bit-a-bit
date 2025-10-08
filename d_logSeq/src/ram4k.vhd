@@ -59,6 +59,7 @@ architecture arch of Ram4K is
 	signal output0, output1, output2, output3, output4, output5, output6, output7 : STD_LOGIC_VECTOR(15 downto 0);
 
 begin
+
 	dmux: dmux8way port map(
 		a   => load,
 		sel => address(11 downto 9),

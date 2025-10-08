@@ -14,6 +14,7 @@ entity FlipFlopT is
 end entity;
 
 architecture arch of FlipFlopT is
+
 	signal q_int: std_logic:= '0';
 
 begin
