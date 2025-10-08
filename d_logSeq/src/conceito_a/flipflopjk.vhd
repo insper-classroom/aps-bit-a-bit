@@ -5,6 +5,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity FlipFlopJK is
+
     port(
         clock : in  std_logic;
         J     : in  std_logic;
@@ -21,6 +22,7 @@ architecture arch of FlipFlopJK is
 
 
 begin
+
 
     process(clock)
     begin
