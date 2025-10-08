@@ -53,7 +53,7 @@ signal clock, clear, set : std_logic;
 begin
 
 Clock <= not KEY(0); -- os botoes quando nao apertado vale 1
-                     -- e apertado 0, essa logica inverte isso
+                     -- e apertado 0, essa logica inverte iss
 clear <= not KEY(1);
 set	<= not KEY(2);
 
