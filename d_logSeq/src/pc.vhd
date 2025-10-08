@@ -11,55 +11,86 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use IEEE.NUMERIC_STD.ALL;
+use ieee.numeric_std.all;
 
 entity PC is
     port(
-        clock     : in  STD_LOGIC;
-        increment : in  STD_LOGIC;
-        load      : in  STD_LOGIC;
-        reset     : in  STD_LOGIC;
-        input     : in  STD_LOGIC_VECTOR(15 downto 0);
-        output    : out STD_LOGIC_VECTOR(15 downto 0) 
+        clock     : in  std_logic;
+        increment : in  std_logic;
+        load      : in  std_logic;
+        reset     : in  std_logic;
+        input     : in  std_logic_vector(15 downto 0);
+        output    : out std_logic_vector(15 downto 0)
     );
 end entity;
 
 architecture arch of PC is
+    signal mux_out   : std_logic_vector(15 downto 0);
+    signal mux_out1  : std_logic_vector(15 downto 0);
+    signal mux_out2  : std_logic_vector(15 downto 0);
+    signal inc_out   : std_logic_vector(15 downto 0);
+    signal pc_reg    : std_logic_vector(15 downto 0);
+    signal load_reg  : std_logic;
 
-  signal muxOut : std_logic_vector(15 downto 0);
-  signal muxin0 : std_logic_vector(15 downto 0);
-  signal outputReg : std_logic_vector(15 downto 0);
-  signal load_reg: std_logic;
-  signal sel_mux: std_logic;
+    component Inc16 is
+        port(
+            a : in  std_logic_vector(15 downto 0);
+            q : out std_logic_vector(15 downto 0)
+        );
+    end component;
 
-  component Inc16 is
-      port(
-          a   :  in STD_LOGIC_VECTOR(15 downto 0);
-          q   : out STD_LOGIC_VECTOR(15 downto 0)
-          );
-  end component;
-
-  component Register16 is
-      port(
-          clock:   in STD_LOGIC;
-          input:   in STD_LOGIC_VECTOR(15 downto 0);
-          load:    in STD_LOGIC;
-          output: out STD_LOGIC_VECTOR(15 downto 0)
+    component Register16 is
+        port(
+            clock  : in  std_logic;
+            input  : in  std_logic_vector(15 downto 0);
+            load   : in  std_logic;
+            output : out std_logic_vector(15 downto 0)
         );
     end component;
 
     component Mux16 is
-		port (
-			a:   in STD_LOGIC_VECTOR(15 downto 0);
-			b:   in STD_LOGIC_VECTOR(15 downto 0);
-			sel: in  STD_LOGIC;
-			q:   out STD_LOGIC_VECTOR(15 downto 0)
-            );
-	end component;
-
-
+        port(
+            a   : in  std_logic_vector(15 downto 0);
+            b   : in  std_logic_vector(15 downto 0);
+            sel : in  std_logic;
+            q   : out std_logic_vector(15 downto 0)
+        );
+    end component;
 begin
+    load_reg <= (load or increment or reset);
 
+    inc: Inc16 port map(
+        a => pc_reg,
+        q => inc_out
+    );
 
+    mux1: Mux16 port map(
+        a   => pc_reg,
+        b   => inc_out,
+        sel => increment,
+        q   => mux_out1
+    );
 
+    mux2: Mux16 port map(
+        a   => mux_out1,
+        b   => input,
+        sel => load,
+        q   => mux_out2
+    );
+
+    mux3: Mux16 port map(
+        a   => mux_out2,
+        b   => x"0000",
+        sel => reset,
+        q   => mux_out
+    );
+
+    reg16: Register16 port map(
+        clock  => clock,
+        input  => mux_out,
+        load   => load_reg,
+        output => pc_reg
+    );
+
+    output <= pc_reg;
 end architecture;
