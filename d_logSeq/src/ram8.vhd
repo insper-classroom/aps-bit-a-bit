@@ -5,6 +5,8 @@
 Library ieee;
 use ieee.std_logic_1164.all;
 
+--sou uma branch gambiarra :)
+
 entity Ram8 is
 	port(
 		clock:   in  STD_LOGIC;
