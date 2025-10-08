@@ -55,10 +55,22 @@ component Ram8 is
 	);
 end component;
 
+component PC is
+  port(
+    clock     : in  STD_LOGIC;
+    increment : in  STD_LOGIC;
+    load      : in  STD_LOGIC;
+    reset     : in  STD_LOGIC;
+    input     : in  STD_LOGIC_VECTOR(15 downto 0);
+    output    : out STD_LOGIC_VECTOR(15 downto 0) 
+  );
+end component;
+
 component sevenseg is
 	port (
-			bcd : in  STD_LOGIC_VECTOR(3 downto 0);
-			leds: out STD_LOGIC_VECTOR(6 downto 0));
+		bcd : in  STD_LOGIC_VECTOR(3 downto 0);
+		leds: out STD_LOGIC_VECTOR(6 downto 0)
+		);
 end component;
 
 --------------
@@ -69,6 +81,8 @@ signal clock, clear, set : std_logic;
 signal HexBF35: std_logic_vector(15 downto 0);
 signal ad: std_logic_vector(2 downto 0);
 signal outRam: std_logic_vector(15 downto 0);
+signal outPC: std_logic_vector(15 downto 0);
+signal numero: std_logic_vector(15 downto 0);
 
 ---------------
 -- implementacao
@@ -79,8 +93,9 @@ Clock <= not KEY(0); -- os botoes quando nao apertado vale 1
                      -- e apertado 0, essa logica inverte iss
 clear <= not KEY(1);
 set	<= not KEY(2);
-ad <= SW(2 downto 0);
+--ad <= SW(2 downto 0);
 HexBF35 <= x"BF35";
+numero <= x"BC75";
 
 -- u0 : FlipFlopD port map (
 -- 		clock    => Clock,
@@ -90,35 +105,47 @@ HexBF35 <= x"BF35";
 -- 		q        => LEDR(0)
 -- 	);		
 
-u1: Ram8
+-- u1: Ram8
+-- 	port map(
+-- 		clock => Clock,
+-- 		input => HexBF35,
+-- 		load => set,
+-- 		address => ad,
+-- 		output => outRam
+-- 	);
+
+pc0: PC
 	port map(
-		clock => Clock,
-		input => HexBF35,
-		load => set,
-		address => ad,
-		output => outRam
+		clock     => Clock,
+		increment => SW(0),
+		load      => set,
+		reset     => SW(1),
+		input     => numero,
+		output    => outPC
 	);
 
 s0: sevenseg
 	port map(
-		bcd => outRam(3 downto 0),
+		bcd => outPC(3 downto 0),
 		leds => HEX0
 	);
 s1: sevenseg
 	port map(
-		bcd => outRam(7 downto 4),
+		bcd => outPC(7 downto 4),
 		leds => HEX1
 	);
 
 s2: sevenseg
 	port map(
-		bcd => outRam(11 downto 8),
+		bcd => outPC(11 downto 8),
 		leds => HEX2
 	);
 s3: sevenseg
 	port map(
-		bcd => outRam(15 downto 12),
+		bcd => outPC(15 downto 12),
 		leds => HEX3
 	);
+
+
 
 end rtl;

@@ -556,4 +556,21 @@ set_global_assignment -name VHDL_FILE ../../b_logComb/src/mux8way16.vhd
 set_global_assignment -name VHDL_FILE ../../b_logComb/src/dmux8way.vhd
 set_global_assignment -name VHDL_FILE ../../c_ULA/src/inc16.vhd
 set_global_assignment -name VHDL_FILE ../../b_logComb/src/sevenseg.vhd
+set_global_assignment -name VHDL_FILE ../../b_logComb/src/and16.vhd
+set_global_assignment -name VHDL_FILE ../../b_logComb/src/mux4way.vhd
+set_global_assignment -name VHDL_FILE ../../b_logComb/src/mux4way16.vhd
+set_global_assignment -name VHDL_FILE ../../b_logComb/src/or16.vhd
+set_global_assignment -name VHDL_FILE ../../b_logComb/src/or8way.vhd
+set_global_assignment -name VHDL_FILE ../../b_logComb/src/not16.vhd
+set_global_assignment -name VHDL_FILE ../../b_logComb/src/dmux2way.vhd
+set_global_assignment -name VHDL_FILE ../../b_logComb/src/dmux4way.vhd
+set_global_assignment -name VHDL_FILE ../../b_logComb/src/mux8way.vhd
+set_global_assignment -name VHDL_FILE ../../b_logComb/src/nor8way.vhd
+set_global_assignment -name VHDL_FILE ../../b_logComb/src/xor3.vhd
+set_global_assignment -name VHDL_FILE ../../c_ULA/src/add16.vhd
+set_global_assignment -name VHDL_FILE ../../c_ULA/src/fulladder.vhd
+set_global_assignment -name VHDL_FILE ../../c_ULA/src/comparador16.vhd
+set_global_assignment -name VHDL_FILE ../../c_ULA/src/halfadder.vhd
+set_global_assignment -name VHDL_FILE ../../c_ULA/src/inversor16.vhd
+set_global_assignment -name VHDL_FILE ../../c_ULA/src/zerador16.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
