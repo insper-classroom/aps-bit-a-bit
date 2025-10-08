@@ -9,7 +9,7 @@
 * https://youtu.be/e1TlqQitpmw
 
 ### Vídeo explicativo do FFJK, FFT e Counterdown:
-* 
+* https://youtu.be/OFnzTAkuaPU
 
 ## APS C: Unidade Lógica Aritmética
 ### Vídeo do conceito B:
