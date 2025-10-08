@@ -101,23 +101,23 @@ u1: Ram8
 
 s0: sevenseg
 	port map(
-		bcd => outRam(3 downto 0),
+		bcd => outRam(3 downto 0);
 		leds => HEX0
 	);
 s1: sevenseg
 	port map(
-		bcd => outRam(7 downto 4),
+		bcd => outRam(7 downto 4);
 		leds => HEX1
 	);
 
 s2: sevenseg
 	port map(
-		bcd => outRam(11 downto 8),
+		bcd => outRam(11 downto 8);
 		leds => HEX2
 	);
 s3: sevenseg
 	port map(
-		bcd => outRam(15 downto 12),
+		bcd => outRam(15 downto 12);
 		leds => HEX3
 	);
 
