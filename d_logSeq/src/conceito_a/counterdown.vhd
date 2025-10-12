@@ -23,8 +23,27 @@ architecture arch of CounterDown is
 	end component;
 
 	signal ck, q0, q1, q2: STD_LOGIC;
-
-begin
-
 	
+begin
+	ck <= '1';
+	u0: FlipFlopT
+		port map(
+			clock => clock,
+			t => ck,
+			q => q0
+		);
+	u1: FlipFlopT
+		port map(
+			clock => q0,
+			t => ck,
+			q => q1
+		);
+	u2: FlipFlopT
+		port map(
+			clock => q1,
+			t => ck,
+			q => q2
+		);
+ 	q <= q2 & q1 & q0;
+
 end architecture;

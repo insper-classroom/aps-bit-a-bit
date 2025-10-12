@@ -15,8 +15,22 @@ end entity;
 
 architecture arch of FlipFlopT is
 
+	signal q_int: std_logic:= '0';
 
 begin
+	process(clock)
+	begin
+		if rising_edge(clock) then
+			case t is
+				when '0' =>
+					null;
+				when others =>
+					q_int <= not(q_int);
+			end case;
+		end if;
+	end process;
 
+	q		<= q_int;
+	notq	<= not(q_int);
 
 end architecture;
