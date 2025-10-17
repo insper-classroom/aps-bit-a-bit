@@ -69,10 +69,11 @@ architecture arch of CPU is
     port(
       instruction                 : in STD_LOGIC_VECTOR(17 downto 0);
       zr,ng                       : in STD_LOGIC;
+      muxS                        : out std_logic;
       muxALUI_A                   : out STD_LOGIC;
       muxAM                       : out STD_LOGIC;
       zx, nx, zy, ny, f, no       : out STD_LOGIC;
-      loadA, loadD, loadM, loadPC : out STD_LOGIC
+      loadA, loadD, loadS, loadM, loadPC : out STD_LOGIC
       );
   end component;
 
@@ -113,6 +114,7 @@ begin
       instruction  => instruction,
       zr          => c_zr,
       ng          => c_ng,
+      muxS        => c_muxS,        ---- novo
       muxALUI_A   => c_muxALUI_A,
       muxAM       => c_muxAM,
       zx          => c_zx,
@@ -123,6 +125,7 @@ begin
       no          => c_no,
       loadA       => c_loadA,
       loadD       => c_loadD,
+      loadS       => c_loadS,       ---- novo
       loadM       => c_loadM,
       loadPC      => c_loadPC
     );
