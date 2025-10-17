@@ -90,8 +90,8 @@ ARCHITECTURE logic OF MemoryIO IS
     SIGNAL SW16 : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
     SIGNAL LED16 : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
 
-    -- constantes para os limites (ajuda a legibilidade)
-    constant LIM_RAM_HIGH  : integer := 16383; -- último endereço RAM
+    -- limites
+    constant LIM_RAM_HIGH  : integer := 16383; 
     constant LIM_LCD_LOW   : integer := 16384;
     constant LIM_LCD_HIGH  : integer := 21183;
     constant ADDR_LED      : integer := 21184;
@@ -136,22 +136,18 @@ BEGIN
     ----------------------------------------
     -- Controla LOAD do display e da ram e LED
     ----------------------------------------
-    -- converte ADDRESS para unsigned para comparar numericamente
-    -- LOAD_RAM:  endereço 0 .. 16383
+
     LOAD_RAM <= LOAD when unsigned(ADDRESS) <= to_unsigned(LIM_RAM_HIGH, ADDRESS'length) else '0';
 
-    -- LOAD_DISPLAY: 16384 .. 21183
     LOAD_DISPLAY <= LOAD when (unsigned(ADDRESS) >= to_unsigned(LIM_LCD_LOW, ADDRESS'length) and
                                 unsigned(ADDRESS) <= to_unsigned(LIM_LCD_HIGH, ADDRESS'length))
                      else '0';
 
-    -- LOAD_LED: endereço único 21184
     LOAD_LED <= LOAD when unsigned(ADDRESS) = to_unsigned(ADDR_LED, ADDRESS'length) else '0';
 
     ----------------------------------------
     -- SW e LED
     ----------------------------------------
-    -- Compatibilidade de tamanho
     SW16(15 downto 10) <= (others => '0');
     SW16(9 DOWNTO 0) <= SW;
 
