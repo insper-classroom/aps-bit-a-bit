@@ -87,6 +87,7 @@ architecture arch of CPU is
   signal c_loadA: STD_LOGIC;
   signal c_loadD: STD_LOGIC;
   signal c_loadPC: STD_LOGIC;
+  signal c_loadM: STD_LOGIC;      -- tive que criar esse sinal
   signal c_zr: std_logic := '0'; 
   signal c_ng: std_logic := '0'; 
 
@@ -100,8 +101,86 @@ architecture arch of CPU is
 
 begin
 
+  c_unit : ControlUnit
+    port map(
+      instruction  => instruction,
+      zr          => c_zr,
+      ng          => c_ng,
+      muxALUI_A   => c_muxALUI_A,
+      muxAM       => c_muxAM,
+      zx          => c_zx,
+      nx          => c_nx,
+      zy          => c_zy,
+      ny          => c_ny,
+      f           => c_f,
+      no          => c_no,
+      loadA       => c_loadA,
+      loadD       => c_loadD,
+      loadM       => c_loadM,
+      loadPC      => c_loadPC
+    );
 
+  muxALUI : mux16
+    port map(
+      a   => s_ALUout,
+      b   => instruction(15 downto 0),
+      sel => c_muxALUI_A,
+      q   => s_muxALUI_Aout
+    );
+  
+  pcounter : pc 
+    port map(
+      clock     => clock,
+      increment =>  '1',
+      load      => c_loadPC,
+      reset     => reset,
+      input     => s_regAout,
+      output    => s_pcout
+    );
 
+  regA : Register16
+    port map(
+      clock   => clock,
+      input   => s_muxALUI_Aout,
+      load    => c_loadA,
+      output  => s_regAout
+      );
+
+  regD : Register16
+    port map(
+      clock   => clock,
+      input   => s_ALUout,
+      load    => c_loadD,
+      output  => s_regDout
+      );
+  
+  muxAM : mux16
+    port map(
+      a   => s_regAout,
+      b   => inM, 
+      sel => c_muxAM,
+      q   => s_muxAM_out
+    );
+
+  ula : ALU
+    port map(
+      x     => s_regDout,
+      y     => s_muxAM_out,
+      zx    => c_zx,
+      nx    => c_nx,
+      zy    => c_zy,
+      ny    => c_ny,
+      f     => c_f,
+      no    => c_no,
+      zr    => c_zr,
+      ng    => c_ng,
+      saida => s_ALUout
+    );
+
+  outM    <= s_ALUout;
+  writeM  <= c_loadM;
+  addressM <= s_regAout(14 downto 0);
+  pcout   <= s_pcout(14 downto 0);
 
 end architecture;
 
