@@ -7,9 +7,9 @@ puts stdout ""
 
 set DEV_NAME "@1: 5CE(BA4|FA4) (0x02B050DD)"
 
-set MIF "/home/eu/Downloads/teste/tmp2/Z01.1-proj/e_CPU/CPU_FPGA/advinhe.mif"
+set MIF "/home/denis/elementos/aps-bit-a-bit/e_CPU/CPU_FPGA/advinhe.mif"
 
-set JTAG "USB-Blaster \[1-2\]"
+set JTAG "USB-Blaster \[1-3\]"
 
 begin_memory_edit -hardware_name $JTAG -device_name $DEV_NAME
 

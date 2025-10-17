@@ -86,21 +86,30 @@ ARCHITECTURE logic OF MemoryIO IS
     SIGNAL LOAD_RAM : STD_LOGIC := '0';
     SIGNAL LOAD_DISPLAY : STD_LOGIC := '0';
     SIGNAL LOAD_LED : STD_LOGIC := '0';
-    SIGNAL OUTPUT_RAM : STD_LOGIC_VECTOR(15 downto 0);
-    SIGNAL SW16 : STD_LOGIC_VECTOR(15 downto 0);
-    SIGNAL LED16 : STD_LOGIC_VECTOR(15 downto 0);
+    SIGNAL OUTPUT_RAM : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
+    SIGNAL SW16 : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
+    SIGNAL LED16 : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');
+
+    -- constantes para os limites (ajuda a legibilidade)
+    constant LIM_RAM_HIGH  : integer := 16383; -- último endereço RAM
+    constant LIM_LCD_LOW   : integer := 16384;
+    constant LIM_LCD_HIGH  : integer := 21183;
+    constant ADDR_LED      : integer := 21184;
+    constant ADDR_SW       : integer := 21185;
 
 BEGIN
 
-    RAM: RAM16K PORT MAP(
+    RAM: RAM16K 
+      PORT MAP(
         address => ADDRESS(13 downto 0),
         clock => CLK_FAST,
         data => INPUT,
         wren => LOAD_RAM,
         q => OUTPUT_RAM
-    );
+        );
 
-    DISPLAY: Screen port map (
+    DISPLAY: Screen 
+      port map (
         RST => RST,
         CLK_FAST => CLK_FAST,
         CLK_SLOW => CLK_SLOW,
@@ -114,38 +123,50 @@ BEGIN
         LCD_RESET_N => LCD_RESET_N,
         LCD_RS => LCD_RS,
         LCD_WR_N => LCD_WR_N
-    );
+      );
 
-    reg: Register16 port map(
+    reg: Register16 
+      port map(
         clock => CLK_SLOW,
         input => INPUT,
         load => LOAD_LED,
         output => LED16
-    );
+      );
 
     ----------------------------------------
-    -- Controla LOAD do display e da ram e LED !
+    -- Controla LOAD do display e da ram e LED
     ----------------------------------------
-    LOAD_DISPLAY <= '1' when (LOAD = '1' and ADDRESS(14) = '1' and ADDRESS(13) = '0') else '0';
-    LOAD_RAM <= '1' when (LOAD = '1' and ADDRESS(14) = '0') else '0';
-    LOAD_LED <= '1' when (LOAD = '1' and ADDRESS(14) = '1' and ADDRESS(13) = '1') else '0';
+    -- converte ADDRESS para unsigned para comparar numericamente
+    -- LOAD_RAM:  endereço 0 .. 16383
+    LOAD_RAM <= LOAD when unsigned(ADDRESS) <= to_unsigned(LIM_RAM_HIGH, ADDRESS'length) else '0';
+
+    -- LOAD_DISPLAY: 16384 .. 21183
+    LOAD_DISPLAY <= LOAD when (unsigned(ADDRESS) >= to_unsigned(LIM_LCD_LOW, ADDRESS'length) and
+                                unsigned(ADDRESS) <= to_unsigned(LIM_LCD_HIGH, ADDRESS'length))
+                     else '0';
+
+    -- LOAD_LED: endereço único 21184
+    LOAD_LED <= LOAD when unsigned(ADDRESS) = to_unsigned(ADDR_LED, ADDRESS'length) else '0';
 
     ----------------------------------------
     -- SW e LED
     ----------------------------------------
     -- Compatibilidade de tamanho
-    LED <= LED16(9 downto 0);
-    
-    -- Compatibilidade de tamanho
     SW16(15 downto 10) <= (others => '0');
     SW16(9 DOWNTO 0) <= SW;
 
+    LED <= LED16(9 downto 0);
+    
     ----------------------------------------
     -- SAIDA do memory I/O
+    -- RAM read -> OUTPUT_RAM
+    -- LCD read -> return zeros (write only)
+    -- LED read -> return zeros (write only)
+    -- SW read (at address 21185) -> SW16
     ----------------------------------------
-    -- precisa ser: RAM ou SW16
-    OUTPUT <= OUTPUT_RAM when ADDRESS(14) = '0' else
-              SW16 when ADDRESS(14) = '1' and ADDRESS(13) = '0' else
+    OUTPUT <= OUTPUT_RAM
+              when unsigned(ADDRESS) <= to_unsigned(LIM_RAM_HIGH, ADDRESS'length) else
+              SW16 when unsigned(ADDRESS) = to_unsigned(ADDR_SW, ADDRESS'length) else
               (others => '0');
 
 END logic;
