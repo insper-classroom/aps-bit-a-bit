@@ -28,10 +28,35 @@ end entity;
 
 architecture arch of ControlUnit is
 
+  signal j : std_logic_vector(2 downto 0);
+  
 begin
-  
-  
 
+  j <= instruction(2 downto 0);
 
+  loadD <= instruction(17) and instruction(4);
+  loadM <= instruction(17) and instruction(5);
+  loadA <= not instruction(17) or (instruction(17) and instruction(3));
+
+  muxALUI_A <= '1' when instruction(17) = '0' else '0';
+
+  zx <= instruction(17) and instruction(12);
+  nx <= instruction(17) and instruction(11);
+  zy <= instruction(17) and instruction(10);
+  ny <= instruction(17) and instruction(9);
+  f  <= instruction(17) and instruction(8);
+  no <= instruction(17) and instruction(7);
+
+  muxAM <= instruction(17) and instruction(13);
+
+  loadPC <= '1' when (instruction(17) = '1' and (
+       (j = "001" and zr = '0' and ng = '0')        
+    or (j = "010" and zr = '1')                     
+    or (j = "011" and (zr = '1' or (zr = '0' and ng = '0'))) 
+    or (j = "100" and ng = '1')                     
+    or (j = "101" and zr = '0')                    
+    or (j = "110" and (ng = '1' or zr = '1'))      
+    or (j = "111")                                 
+  )) else '0';
 
 end architecture;
