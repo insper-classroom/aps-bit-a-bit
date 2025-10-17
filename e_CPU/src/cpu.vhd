@@ -99,6 +99,13 @@ architecture arch of CPU is
 
   signal s_pcout: STD_LOGIC_VECTOR(15 downto 0);
 
+--------------------------------- novos sinais (conceito A)
+  signal c_loadS:   std_logic;
+  signal s_regSout: std_logic_vector(15 downto 0);
+  signal c_muxS:    std_logic;
+  signal c_muxSout: std_logic_vector(15 downto 0);
+---------------------------------
+
 begin
 
   c_unit : ControlUnit
@@ -153,7 +160,7 @@ begin
       load    => c_loadD,
       output  => s_regDout
       );
-  
+
   muxAM : mux16
     port map(
       a   => s_regAout,
@@ -161,6 +168,23 @@ begin
       sel => c_muxAM,
       q   => s_muxAM_out
     );
+--------------------------------- novo registrador que vem da ROM
+  regS : Register16
+    port map(
+      clock   => clock,
+      input   => instruction(15 downto 0),
+      load    => c_loadS,
+      output  => s_regSout
+      );
+--------------------------------- novo mux entre RegA e RegS
+  muxS : mux16
+    port map (
+      a   => s_regSout, 
+      b   => s_regDout,
+      sel => c_muxS,
+      q   => s_muxSout
+    );
+---------------------------------
 
   ula : ALU
     port map(
