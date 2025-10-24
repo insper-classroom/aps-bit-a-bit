@@ -28,5 +28,16 @@ architecture arch of Register8 is
 begin
 
 
+	gen_bits: for i in 0 to 7 generate
+		U_BIN: BinaryDigit
+			port map (
+				clock => clock,
+				input => input(i),
+				load => load,
+				output => output(i)
+			);
+	
+	end generate gen_bits;
+
 
 end architecture;
