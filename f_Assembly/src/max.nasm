@@ -9,4 +9,21 @@
 ; ou seja, o maior valor que estiver, ou em R0 ou R1 sera copiado para R2
 ; Estamos considerando número inteiros
 
+    leaw    RAM, %A
+    movw    (%A), %D
+    leaw    RAM+1, %A
+    subw    (%A), %D, %A
+    jle     r0_maior
 
+    leaw    RAM+1, %A
+    movw    (%A), %D
+    jmp     fim
+
+r0_maior:
+    leaw    RAM, %A
+    movw    (%A), %D
+
+fim:
+    leaw    RAM+2, %A
+    movw    %D, (%A)
+    nop
