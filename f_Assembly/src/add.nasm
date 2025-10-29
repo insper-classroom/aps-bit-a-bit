@@ -12,4 +12,3 @@ addw (%A), %D, %D ; %D = RAM[0] + RAM[1]
 
 leaw $2, %A      ; %A = 2
 movw %D, (%A)    ; RAM[2] = %D
-
