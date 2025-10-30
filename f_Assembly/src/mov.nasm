@@ -26,3 +26,5 @@ movw %D, (%A)
 leaw $3, %A 
 movw $1, (%A)
 
+
+nop
