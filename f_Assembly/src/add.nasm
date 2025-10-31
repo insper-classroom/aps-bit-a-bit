@@ -5,12 +5,13 @@
 ; Adicione o valor de RAM[1] com RAM[0] gravando em RAM[2].
 
 
+leaw %0, %A     ; atribui 0 para RegA
+movw (%A), %D   ; atribui o valor de RAM[0] para RegD
+leaw %1, %A     ; atribui 1 para RegA
+movw (%A), %A   ; atribui o valor de RAM[1] para RegA
+addw %A, %D, %D ; soma RegA e RegD
 
-movw (%A), %D
-leaw %1, %A
-movw (%A), %A
-addw %A, %D, %D
+leaw %2, %A     ; atribui 2 para RegA
+movw %D, (%A)   ; atribui o valor de RegD para RAM[2]
 
-leaw %2, %A
-movw (%A), %D
-
+nop

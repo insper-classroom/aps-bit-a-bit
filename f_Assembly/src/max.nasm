@@ -9,4 +9,3 @@
 ; ou seja, o maior valor que estiver, ou em R0 ou R1 sera copiado para R2
 ; Estamos considerando número inteiros
 
-

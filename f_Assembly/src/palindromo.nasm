@@ -20,4 +20,6 @@
 ;  RAM[14] = a
 ; 
 
- 
+; é palindromo -> RAM[0] = 1
+; não é palindromo -> RAM[0] = 0
+

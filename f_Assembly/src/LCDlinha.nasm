@@ -5,4 +5,3 @@
 ;
 ; Desenhe uma linha no LCD
 
-
