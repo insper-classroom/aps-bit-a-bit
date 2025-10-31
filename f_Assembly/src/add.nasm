@@ -4,6 +4,7 @@
 ; Data: 27/03/2017
 ; Adicione o valor de RAM[1] com RAM[0] gravando em RAM[2].
 
+
 leaw $0, %A      ; %A = 0
 movw (%A), %D    ; %D = RAM[0]
 

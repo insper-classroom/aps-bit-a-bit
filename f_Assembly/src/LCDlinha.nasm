@@ -4,5 +4,3 @@
 ; Data: 28/3/2018
 ;
 ; Desenhe uma linha no LCD
-
-

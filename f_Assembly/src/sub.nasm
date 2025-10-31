@@ -21,3 +21,4 @@ leaw $2, %A
 movw %D, (%A)      ; RAM[2] = %D
 
 nop
+
