@@ -26,7 +26,7 @@ leaw $21185, %A
 movw (%A), %D        ; Recarrega valor original
 leaw $992, %A
 andw %D, %A, %D      ; %D = bits 9-5
-leaw $0, %a
+leaw $0, %A
 movw %D, (%A)
 leaw $32, %A
 movw %A, %D
@@ -88,7 +88,7 @@ nop
 leaw $10, %A
 movw (%A), %D
 leaw $0, %A 
-movw D%, (%A)
+movw %D, (%A)
 leaw $2, %A 
 movw (%A), %D
 leaw $1, %A
