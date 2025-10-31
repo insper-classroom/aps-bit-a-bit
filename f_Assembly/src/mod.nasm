@@ -12,3 +12,27 @@
 ; ------------------------------------------------------------
 
 
+
+leaw $0, %A
+movw (%A), %D
+
+LOOP:
+leaw $1, %A
+subw %D, (%A), %D
+leaw $LOOP, %A
+jge %D
+nop ;sempre tem nop depois do salto
+
+leaw $1, %A
+addw %D, (%A), %D
+leaw $2, %A
+movw %D, (%A)
+
+nop
+
+
+      
+
+
+
+
