@@ -22,6 +22,7 @@ loop_start:
     movw (%A), %D      ; %D = contador
     leaw $end_loop, %A
     jle  %D            ; se contador <= 0, pula para end_loop
+    nop
 
     ; 4) resultado = resultado + n
     leaw $0, %A
@@ -42,6 +43,7 @@ loop_start:
     ; 6) voltar ao início do loop
     leaw $loop_start, %A
     jmp
+    nop
 
 end_loop:
     nop
