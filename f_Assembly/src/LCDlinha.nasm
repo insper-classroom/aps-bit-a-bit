@@ -5,6 +5,7 @@
 ;
 ; Desenhe uma linha no LCD
 
+
 leaw $20, %A
 movw %A, %D
 leaw $0, %A
