@@ -4,6 +4,9 @@
 ### Vídeo da SWeLED na FPGA:
 * https://youtube.com/shorts/sfLKg77LO7A?si=BCkWhuVnj9WGzLor
 
+### Vídeo da SWeLED2 na FPGA:
+* https://youtu.be/xc9AMhWx7FM
+
 ## APS D: Lógica Sequencial
 ### Vídeo da RAM8 na FPGA:
 * https://youtu.be/aUttmNczBd0
