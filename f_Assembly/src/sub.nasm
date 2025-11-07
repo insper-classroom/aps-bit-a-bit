@@ -15,3 +15,12 @@ leaw $2, %A     ; atribui 2 para RegA
 movw %D, (%A)   ; atribui o valor de RegD para RAM[2]
 
 nop
+; 3) Faz a subtração: RAM[1] - RAM[0]
+subw %D, %A, %D    ; %D = %D - %A = RAM[1] - RAM[0]
+
+; 4) Grava o resultado em RAM[2]
+leaw $2, %A
+movw %D, (%A)      ; RAM[2] = %D
+
+nop
+

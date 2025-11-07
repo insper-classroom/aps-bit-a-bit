@@ -23,3 +23,38 @@
 ; é palindromo -> RAM[0] = 1
 ; não é palindromo -> RAM[0] = 0
 
+; comeca RAM[0] = 1
+leaw $1, %A
+movw %A, %D
+leaw $0, %A
+movw %D, (%A)
+
+leaw $10, %A
+movw (%A), %D
+leaw $14, %A
+subw (%A), %D, %D
+leaw $NAO_PAL, %A
+jne %D
+nop
+
+leaw $11, %A
+movw (%A), %D
+leaw $13, %A
+subw (%A), %D, %D
+leaw $NAO_PAL, %A
+jne %D
+nop
+
+leaw $FIM, %A
+jmp
+nop
+
+NAO_PAL:
+leaw $0, %A
+movw %A, %D
+leaw $0, %A
+movw %D, (%A)
+
+FIM:
+nop
+

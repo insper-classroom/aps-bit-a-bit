@@ -15,3 +15,11 @@ leaw %2, %A     ; atribui 2 para RegA
 movw %D, (%A)   ; atribui o valor de RegD para RAM[2]
 
 nop
+leaw $0, %A      ; %A = 0
+movw (%A), %D    ; %D = RAM[0]
+
+leaw $1, %A      ; %A = 1
+addw (%A), %D, %D ; %D = RAM[0] + RAM[1]
+
+leaw $2, %A      ; %A = 2
+movw %D, (%A)    ; RAM[2] = %D
