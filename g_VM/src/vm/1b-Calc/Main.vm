@@ -17,6 +17,18 @@
 
 function Main.main 0
 
+push 14
+push 2
+add
+
+push 123
+sub
+
+push 1
+add
+
+pop temp 0
+
 
 // esse loop sempre deve existir!
 // caso contrario o computador vai

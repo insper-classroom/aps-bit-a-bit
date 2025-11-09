@@ -25,6 +25,23 @@
 function Main.main 0
 
 
+// PRIMEIRO PASSO: Faz-se necessário realizar a primeira soma da expressão dada:
+push const 14
+push const 2
+add               // Soma: 14 + 2 = 16
+pop temp 0        // Armazena a soma em temp[0]
+
+// SEGUNDO PASSO: Faz-se necessário realizar a segunda soma da expressão dada:
+push const 8
+push const 1
+sub               // Subtração: 8 - 1 = 7
+pop temp 2        // Armazena a subtração em temp[2]
+
+// TERCEIRO PASSO: Chamar a função de multiplicação e realizar a multiplicação e armazenar em temp[1]
+push temp 0       // Empilha o 1° argumento da função -> 16
+push temp 2       // Empilha o 2° argumento da função -> 7
+call mult 2       // Chama a função mult com 2 argumentos mult(16,7)
+pop temp 1        // Armazena o resultado em temp[1]
 
 
 // esse loop sempre deve existir!
