@@ -1,1 +1,43 @@
 function pow 3
+
+// local 0 -> acumulador (resultado)
+// local 1 -> expoente (contador)
+// local 2 -> base (fixa)
+
+ // inicializa acumulador com 1
+ push constant 1
+ pop local 0
+
+ // copia expoente (argument 1) para local 1
+ push argument 1
+ pop local 1
+
+ // copia base (argument 0) para local 2
+ push argument 0
+ pop local 2
+
+label POW_LOOP
+  // se expoente == 0 -> fim
+  push local 1
+  push constant 0
+  eq
+  if-goto END_POW
+
+  // acumulador = acumulador * base
+  push local 0
+  push local 2
+  call mult 2
+  pop local 0
+
+  // expoente = expoente - 1
+  push local 1
+  push constant 1
+  sub
+  pop local 1
+
+  goto POW_LOOP
+
+label END_POW
+  // retorna com resultado no topo da pilha
+  push local 0
+  return

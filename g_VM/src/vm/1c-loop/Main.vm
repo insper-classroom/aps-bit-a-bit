@@ -17,6 +17,40 @@
 
 function Main.main 0
 
+// PRIMEIRO PASSO: Faz-se necessário carregar o valor constante (55) na Pilha e armazená-lo em temp[4], a qual servirá como contador:
+push constant 55
+pop temp 4
+
+// SEGUNDO PASSO: Carregar o valor constante (0) na Pilha e armazená-lo em temp[3], esse valor será atualizado com as iterações do looping:
+push constant 0
+pop temp 3
+
+// CONSTRUÇÃO DO LOOPING:
+label LOOPING
+
+  // Carrega-se temp[4] e a constante (0) na pilha e verifica se temp[4] = 0. Em caso afirmativo, pular para o fim (END):
+  push temp 4
+  push const 0
+  eq
+  if-goto END
+
+  // Carrega-se temp[3] e a constante (1) e soma-se os dois valores. Por fim, armazena essa valor em temp[3]:
+  push temp 3
+  push constant 1
+  add
+  pop temp 3
+
+  // Carrega-se temp[4] e a constante (1) e subtrai os dois valores. Por fim, armazena esse valor em temp[4] (iteração do contador):
+  push temp 4
+  push const 1
+  sub
+  pop temp 4
+
+  // Salto incondicional que volta para o início do looping:
+  goto LOOPING
+
+// Label que sinaliza o fim do código:
+label END
 
 
 // esse loop sempre deve existir!

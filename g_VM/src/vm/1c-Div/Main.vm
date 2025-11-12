@@ -14,9 +14,33 @@
 
 function Main.main 0
 
+// Inicialização do quociente = 0:
+push constant 0
+pop temp 3                       // temp 3 <- 0
+
+label DIV_LOOP
+  // Primeira condicional: Se temp 0 < temp 1, o quociente será 0, logo, pular para label (end):
+  push temp 0
+  push temp 1
+  lt
+  if-goto end
+
+  // Caso temp 0 não seja menor do que temp 1, será necessariamente maior ou igual, com isso, faz-se o loop de divisão:
+  push temp 0
+  push temp 1
+  sub
+  pop temp 0
+
+  // Ajuste de quociente da divisão:
+  push temp 3
+  push constant 1
+  add
+  pop temp 3
+
+  goto DIV_LOOP
    
 label end
-
+// Resultado final é armazenado em temp 3
 
 // esse loop sempre deve existir!
 // caso contrario o computador vai

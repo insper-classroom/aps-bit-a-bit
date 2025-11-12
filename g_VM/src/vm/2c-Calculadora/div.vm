@@ -1,1 +1,41 @@
 function div 2
+// Cria 2 variáveis locais:
+// local 0 → quociente (contador)
+// local 1 → dividendo temporário (atualizado a cada iteração)
+
+// Inicializa o quociente (local 0) com 0:
+push constant 0
+pop local 0
+
+// Copia o dividendo (argument 0) para local 1:
+push argument 0
+pop local 1
+
+// Início do loop de divisão:
+label LOOP_DIV
+
+  // Se dividendo < divisor, fim do loop:
+  push local 1              // dividendo atual
+  push argument 1           // divisor
+  lt                        // (dividendo < divisor) 
+  if-goto END_DIV           // se for verdadeiro (-1), pula pro fim
+
+  // dividendo = dividendo - divisor:
+  push local 1
+  push argument 1
+  sub
+  pop local 1
+
+  // quociente = quociente + 1:
+  push local 0
+  push constant 1
+  add
+  pop local 0
+
+  // volta pro início:
+  goto LOOP_DIV
+
+// Fim do loop:
+label END_DIV
+  push local 0      // coloca o quociente no topo da pilha
+  return
