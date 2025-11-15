@@ -17,18 +17,21 @@
 
 function Main.main 0
 
-push 14
-push 2
+// 1. Calcular (14+2) e colocar na pilha (X)
+push constant 14
+push constant 2
 add
 
-push 123
+// 2. Calcular (123-1) e colocar na pilha (Y)
+push constant 123
+push constant 1
 sub
 
-push 1
-add
+// 3. Fazer a subtração final: X - Y  (16 - 122 = -106)
+sub
 
+// 4. Salvar o resultado
 pop temp 0
-
 
 // esse loop sempre deve existir!
 // caso contrario o computador vai
