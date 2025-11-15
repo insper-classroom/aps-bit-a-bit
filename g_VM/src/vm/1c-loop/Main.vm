@@ -30,7 +30,7 @@ label LOOPING
 
   // Carrega-se temp[4] e a constante (0) na pilha e verifica se temp[4] = 0. Em caso afirmativo, pular para o fim (END):
   push temp 4
-  push const 0
+  push constant 0
   eq
   if-goto END
 
@@ -42,7 +42,7 @@ label LOOPING
 
   // Carrega-se temp[4] e a constante (1) e subtrai os dois valores. Por fim, armazena esse valor em temp[4] (iteração do contador):
   push temp 4
-  push const 1
+  push constant 1
   sub
   pop temp 4
 
